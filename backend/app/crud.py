@@ -32,11 +32,8 @@ def create_user(db: Session, user: schemas.UserCreate):
 
 # OTP CRUD
 def create_otp(db: Session, mobile_number: str):
-    from .core.config import settings
-    if settings.is_twilio_configured:
-        otp_code = str(random.randint(100000, 999999))
-    else:
-        otp_code = "123456" # Default OTP for testing
+    # Generate random 6-digit OTP
+    otp_code = str(random.randint(100000, 999999))
     
     expires_at = datetime.utcnow() + timedelta(minutes=5)
     
