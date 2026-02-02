@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SLC ParaVet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Reusing styles from Farmer Dashboard */
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #00b140;
+            /* Vibrant green */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .header-icon {
+            font-size: 24px;
+        }
+
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            background: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #757575;
+            cursor: pointer;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 5px;
+            /* Reduced side padding for long text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            cursor: pointer;
+            height: 120px;
+            /* Slightly taller for longer titles */
+            justify-content: flex-start;
+            /* Align to top */
+            padding-top: 20px;
+        }
+
+        .card:active {
+            transform: scale(0.95);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+
+        .card-title {
+            font-size: 11px;
+            color: #333;
+            font-weight: 600;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 360px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-icon">☰</div>
+        <h1>SLC paravet <span class="user-name-display"
+                style="font-size: 14px; margin-left: 10px; font-weight: normal;"></span></h1>
+        <!-- Consolidated Profile/Logout Icon -->
+        <div class="profile-icon" onclick="logoutFunction()" title="Log Out">👤</div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", loadUserProfile);
+    </script>
+
+    <div class="dashboard-grid">
+        <!-- Row 1 -->
+        <div class="card" onclick="alert('Admin & Guidelines Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Admin" class="card-icon">
+            <div class="card-title">Admin & Guidelines</div>
+        </div>
+        <div class="card" onclick="alert('Alerts & Followups Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3602/3602145.png" alt="Alerts" class="card-icon">
+            <div class="card-title">Alerts & Followups</div>
+        </div>
+        <div class="card" onclick="alert('Central Stock Management Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2897/2897821.png" alt="Stock" class="card-icon">
+            <div class="card-title">Central Stock Management</div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="card" onclick="alert('Certificates Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2912/2912761.png" alt="Certificates" class="card-icon">
+            <div class="card-title">Certificates</div>
+        </div>
+        <div class="card" onclick="alert('Clinical Registers Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2965/2965313.png" alt="Registers" class="card-icon">
+            <div class="card-title">Clinical Registers</div>
+        </div>
+        <div class="card" onclick="alert('Day Book and Movement Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3238/3238016.png" alt="Day Book" class="card-icon">
+            <div class="card-title">Day Book and Movement</div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="card" onclick="alert('Distribution Registers Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3043/3043224.png" alt="Distribution" class="card-icon">
+            <div class="card-title">Distribution Registers</div>
+        </div>
+        <div class="card" onclick="alert('Farmer and Patient Managements Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/1534/1534938.png" alt="Patient Mgmt" class="card-icon">
+            <div class="card-title">Farmer and Patient Managements</div>
+        </div>
+        <div class="card" onclick="alert('GVA & Analytical Reports Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2910/2910791.png" alt="Reports" class="card-icon">
+            <div class="card-title">GVA & Analytical Reports</div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="card" onclick="alert('Inspection & Professional Note Book Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png" alt="Inspection" class="card-icon">
+            <div class="card-title">Inspection & Professional Note Book</div>
+        </div>
+        <div class="card" onclick="alert('Knowledge Center Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2436/2436874.png" alt="Knowledge" class="card-icon">
+            <div class="card-title">Knowledge Center</div>
+        </div>
+        <div class="card" onclick="alert('Livestock Data and Targets Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2674/2674068.png" alt="Livestock" class="card-icon">
+            <div class="card-title">Livestock Data and Targets</div>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="card" onclick="alert('Preventive and Breeding Services Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3199/3199852.png" alt="Preventive" class="card-icon">
+            <div class="card-title">Preventive and Breeding Services</div>
+        </div>
+        <div class="card" onclick="alert('Profile & Institution Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Institution" class="card-icon">
+            <div class="card-title">Profile & Institution</div>
+        </div>
+        <div class="card" onclick="alert('Raise Request Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3039/3039527.png" alt="Request" class="card-icon">
+            <div class="card-title">Raise Request</div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

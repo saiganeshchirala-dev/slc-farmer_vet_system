@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Create Account</h2>
+
+        <!-- Role Selection -->
+        <div class="role-select">
+            <label><input type="radio" name="role" value="farmer" checked> Farmer</label>
+            <label><input type="radio" name="role" value="paravet"> ParaVet</label>
+            <label><input type="radio" name="role" value="vet"> Veterinarian</label>
+        </div>
+
+        <form onsubmit="registerUser(event)">
+            <input type="text" id="signupName" placeholder="Full Name" required>
+            <input type="tel" id="signupMobile" placeholder="Mobile Number" required>
+
+            <!-- Farmer -->
+            <div class="role-fields" id="farmer">
+                <input type="date" required>
+                <input type="text" placeholder="Village" required>
+                <input type="text" placeholder="Mandal" required>
+                <input type="text" placeholder="District" required>
+                <input type="text" placeholder="State" required>
+                <input type="text" placeholder="Language preference" required>
+            </div>
+
+            <!-- ParaVet -->
+            <div class="role-fields hidden" id="paravet">
+                <input type="date" required>
+                <input type="text" placeholder="Village" required>
+                <input type="text" placeholder="Mandal" required>
+                <input type="text" placeholder="District" required>
+                <input type="text" placeholder="State" required>
+                <input type="text" placeholder="Role" required>
+                <input type="text" placeholder="Working area">
+            </div>
+
+            <!-- Veterinarian -->
+            <div class="role-fields hidden" id="vet">
+                <input type="date" required>
+                <input type="text" placeholder="Village" required>
+                <input type="text" placeholder="Mandal" required>
+                <input type="text" placeholder="District" required>
+                <input type="text" placeholder="State" required>
+                <input type="text" placeholder="VCI/State vet Council Reg" required>
+                <input type="text" placeholder="Degree" required>
+                <input type="text" placeholder="Official Email" required>
+                <input type="text" placeholder="Clinical/Hospital" required>
+                <input type="text" placeholder="Working Area" required>
+            </div>
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
