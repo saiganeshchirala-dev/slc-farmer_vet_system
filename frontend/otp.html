@@ -39,6 +39,14 @@
             <a onclick="changeNumber()" class="change-link">Change</a>
         </p>
 
+        <div id="otpDisplay"
+            style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none;">
+            <p style="margin: 0; color: #2e7d32; font-weight: bold;">Your OTP Code:</p>
+            <p id="generatedOtp"
+                style="font-size: 28px; letter-spacing: 8px; color: #1b5e20; margin: 10px 0; font-weight: bold;"></p>
+            <p style="margin: 0; font-size: 12px; color: #666;">(For testing purposes only)</p>
+        </div>
+
         <div class="otp-container" id="otpInputs">
             <input type="number" class="otp-box" maxlength="1" oninput="moveFocus(this, 1)"
                 onkeydown="handleBackspace(event, this, 1)">

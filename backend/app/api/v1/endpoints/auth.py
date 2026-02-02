@@ -23,7 +23,7 @@ def send_otp(request: schemas.OTPRequest, db: Session = Depends(database_module.
             detail="Failed to send SMS"
         )
 
-    return {"message": "OTP sent successfully"}
+    return {"message": "OTP sent successfully", "otp": otp_record.otp_code}
 
 @router.post("/verify-otp")
 def verify_otp(request: schemas.OTPVerify, db: Session = Depends(database_module.get_db)):

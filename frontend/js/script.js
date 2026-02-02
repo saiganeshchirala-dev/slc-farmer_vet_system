@@ -52,13 +52,14 @@ async function handleSignin(event) {
 
     try {
         // Call Backend to Send OTP
-        await apiCall("/auth/send-otp", "POST", { mobile_number: mobile });
+        const response = await apiCall("/auth/send-otp", "POST", { mobile_number: mobile });
 
-        // Save mobile to Verify later (important for persistence or if page is refreshed)
+        // Save mobile and OTP to display on next page
         localStorage.setItem("verifyingMobile", mobile);
+        localStorage.setItem("generatedOtp", response.otp);
 
         // ONE-WAY FLOW: Always redirect to otp.html
-        alert("OTP Sent! Please check your mobile.");
+        alert("OTP Sent! Please check the OTP displayed on the next page.");
         window.location.href = "otp.html";
 
     } catch (error) {
@@ -107,7 +108,10 @@ async function submitOtp() {
 function initOtpPage() {
     console.log("Initializing OTP Page...");
     const mobile = localStorage.getItem("verifyingMobile");
+    const otp = localStorage.getItem("generatedOtp");
     const displayEl = document.getElementById("displayMobile");
+    const otpDisplayEl = document.getElementById("otpDisplay");
+    const generatedOtpEl = document.getElementById("generatedOtp");
 
     if (mobile && displayEl) {
         displayEl.innerText = "+91 " + mobile;
@@ -115,6 +119,12 @@ function initOtpPage() {
         console.warn("No mobile number found in localStorage, redirecting to login.");
         window.location.href = "index.html";
         return;
+    }
+
+    // Display the OTP on the page
+    if (otp && otpDisplayEl && generatedOtpEl) {
+        generatedOtpEl.innerText = otp;
+        otpDisplayEl.style.display = "block";
     }
 
     startTimer();
@@ -363,8 +373,18 @@ async function resendOtp() {
     }
 
     try {
-        await apiCall("/auth/send-otp", "POST", { mobile_number: mobile });
-        alert("A new OTP has been sent to your mobile number.");
+        const response = await apiCall("/auth/send-otp", "POST", { mobile_number: mobile });
+
+        // Store and display the new OTP
+        localStorage.setItem("generatedOtp", response.otp);
+        const otpDisplayEl = document.getElementById("otpDisplay");
+        const generatedOtpEl = document.getElementById("generatedOtp");
+        if (otpDisplayEl && generatedOtpEl) {
+            generatedOtpEl.innerText = response.otp;
+            otpDisplayEl.style.display = "block";
+        }
+
+        alert("A new OTP has been sent: " + response.otp);
         if (msg) msg.innerText = "";
         return true;
     } catch (error) {
@@ -383,6 +403,8 @@ function logoutFunction() {
     if (confirm("Are you sure you want to log out?")) {
         localStorage.removeItem("loggedInUser");
         localStorage.removeItem("verifyingMobile");
+        localStorage.removeItem("generatedOtp");
         window.location.href = "index.html";
     }
 }
+
