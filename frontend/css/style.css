@@ -48,7 +48,30 @@ button {
 .role-select {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.role-select label {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #2e7d32;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #2e7d32;
+    background: white;
+    transition: all 0.3s;
+}
+
+.role-select label:has(input:checked) {
+    background: #2e7d32;
+    color: white;
+}
+
+.role-select input[type="radio"] {
+    display: none;
 }
 
 .hidden {

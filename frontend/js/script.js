@@ -51,7 +51,20 @@ async function handleSignin(event) {
     }
 
     try {
-        // Call Backend to Send OTP
+        // 1. Check if user exists (Strict Login Flow)
+        try {
+            await apiCall(`/users/${mobile}`, "GET");
+        } catch (checkErr) {
+            // If 404/User not found, redirect to Signup
+            if (checkErr.message.toLowerCase().includes("not found")) {
+                alert("This mobile number is not registered. Redirecting to Sign Up page...");
+                window.location.href = "signup.html";
+                return;
+            }
+            throw checkErr; // Other errors
+        }
+
+        // 2. Call Backend to Send OTP (Only if user exists)
         const response = await apiCall("/auth/send-otp", "POST", { mobile_number: mobile });
 
         // Save mobile and OTP to display on next page
@@ -231,7 +244,25 @@ async function registerUser(event) {
             const val = input.value.trim();
             const ph = input.placeholder ? input.placeholder.toLowerCase() : "";
 
-            if (input.type === 'date') userData.dob = val;
+            if (input.type === 'date') {
+                const dobVal = val;
+                if (!dobVal) throw new Error("Date of Birth is required");
+
+                // Age Validation (> 18)
+                const dobDate = new Date(dobVal);
+                const today = new Date();
+                let age = today.getFullYear() - dobDate.getFullYear();
+                const m = today.getMonth() - dobDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < dobDate.getDate())) {
+                    age--;
+                }
+
+                if (age < 18) {
+                    throw new Error("You must be at least 18 years old to register.");
+                }
+
+                userData.dob = dobVal;
+            }
             else if (ph === "village") userData.village = val;
             else if (ph === "mandal") userData.mandal = val;
             else if (ph === "district") userData.district = val;
