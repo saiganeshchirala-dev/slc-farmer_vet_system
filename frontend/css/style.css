@@ -143,3 +143,12 @@ button {
     margin-left: 5px;
     cursor: pointer;
 }
+
+.input-label {
+    display: block;
+    text-align: left;
+    color: #2e7d32;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}

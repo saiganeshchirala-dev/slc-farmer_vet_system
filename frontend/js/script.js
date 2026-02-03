@@ -292,15 +292,29 @@ async function registerUser(event) {
     }
 }
 
-// Pre-fill Mobile in Signup if exists
+// Pre-fill Mobile in Signup if exists & Set Date Constraints
 if (window.location.pathname.includes("signup.html")) {
     function initSignup() {
+        // 1. Prefill Mobile from Login
         const prefillMobile = localStorage.getItem("verifyingMobile");
         const mobileInput = document.getElementById("signupMobile");
         if (prefillMobile && mobileInput) {
             mobileInput.value = prefillMobile;
-            // Optionally make it read-only if we want to enforce verified number
-            // mobileInput.readOnly = true;
+        }
+
+        // 2. Set Max Date for Age > 18
+        const dobInputs = document.querySelectorAll(".dob-input");
+        if (dobInputs.length > 0) {
+            const today = new Date();
+            const minAgeDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+            // Format to YYYY-MM-DD
+            const maxDateStr = minAgeDate.toISOString().split('T')[0];
+
+            dobInputs.forEach(input => {
+                input.max = maxDateStr;
+                // Optional: set a reasonable min date (e.g., 100 years ago)
+                // input.min = "1920-01-01"; 
+            });
         }
     }
 
