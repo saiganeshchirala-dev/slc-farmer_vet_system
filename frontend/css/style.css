@@ -1,154 +1,222 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
     margin: 0;
+    padding: 0;
+    color: #333;
 }
 
-.container {
-    max-width: 420px;
-    margin: 40px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 6px;
-}
-
-.logo {
-    width: 120px;
-    display: block;
-    margin: 0 auto 15px;
-}
-
-h2,
-h3 {
-    text-align: center;
-    color: #2e7d32;
-}
-
-input {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 12px;
-    border: 1px solid #2e7d32;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-button {
-    width: 100%;
-    padding: 14px;
-    background: #2e7d32;
+/* App Header */
+.app-header {
+    background-color: #00b341;
+    /* Vibrant Green */
     color: white;
-    border: none;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.role-select {
+    padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 20px;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.role-select label {
-    flex: 1;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #2e7d32;
-    border-radius: 4px;
+.app-header .back-btn {
+    font-size: 20px;
+    margin-right: 15px;
     cursor: pointer;
-    font-size: 14px;
-    color: #2e7d32;
-    background: white;
-    transition: all 0.3s;
-}
-
-.role-select label:has(input:checked) {
-    background: #2e7d32;
     color: white;
-}
-
-.role-select input[type="radio"] {
-    display: none;
-}
-
-.hidden {
-    display: none;
-}
-
-.link-text {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.link-text a {
-    color: #2e7d32;
-    font-weight: bold;
     text-decoration: none;
 }
 
-.error {
-    color: red;
+.app-header h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    flex: 1;
     text-align: center;
 }
 
-/* OTP Styling */
-.otp-container {
+/* Container */
+.container {
+    padding: 20px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* Headings & Text */
+h2 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #2e7d32;
+    /* Green Border as per screens */
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input:focus {
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+/* Buttons */
+button.primary-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #00b341;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button.primary-btn:hover {
+    background-color: #009e3a;
+}
+
+/* Links */
+.link-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.link-text a {
+    color: #00b341;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* OTP Specific */
+.otp-logo-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
+}
+
+.otp-logo {
+    width: 180px;
+    height: auto;
+}
+
+.otp-inputs {
+    display: flex;
     gap: 10px;
+    justify-content: center;
     margin: 20px 0;
 }
 
 .otp-box {
-    width: 50px;
+    width: 45px;
     height: 50px;
     text-align: center;
     font-size: 20px;
-    border: 2px solid #ddd;
-    border-radius: 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     font-weight: bold;
-    color: #333;
-    transition: all 0.2s;
-    appearance: textfield;
-    -moz-appearance: textfield;
 }
 
 .otp-box:focus {
-    border-color: #00b140;
-    box-shadow: 0 0 5px rgba(0, 177, 64, 0.3);
+    border-color: #00b341;
     outline: none;
+    background-color: #f9fff9;
 }
 
-/* Remove arrows/spinners from OTP input */
-.otp-box::-webkit-outer-spin-button,
-.otp-box::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
 }
 
-.mobile-display {
+.dash-card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    font-size: 14px;
-    color: #666;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    min-height: 100px;
+}
+
+.dash-card img {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.dash-card div {
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.3;
+}
+
+/* Radio Group */
+.radio-group {
+    display: flex;
+    justify-content: space-around;
     margin-bottom: 20px;
 }
 
-.change-link {
-    color: #2e7d32;
-    text-decoration: none;
-    font-weight: 600;
-    margin-left: 5px;
+.radio-item {
+    display: flex;
+    align-items: center;
     cursor: pointer;
 }
 
-.input-label {
-    display: block;
-    text-align: left;
-    color: #2e7d32;
-    font-size: 14px;
-    margin-bottom: 5px;
-    font-weight: bold;
+.radio-item input {
+    margin-right: 8px;
+    accent-color: #00b341;
+    width: 18px;
+    height: 18px;
+}
+
+/* Utility */
+.hidden {
+    display: none;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }

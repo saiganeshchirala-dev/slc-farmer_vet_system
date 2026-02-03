@@ -31,55 +31,67 @@
 
     <div class="container otp-wrapper">
         <img src="logo.png" class="logo" alt="Logo">
-
-        <h3>Verify Details</h3>
-
-        <p class="mobile-display">
-            OTP sent to <span id="displayMobile">...</span>
-            <a onclick="changeNumber()" class="change-link">Change</a>
-        </p>
-
-        <div id="otpDisplay"
-            style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none;">
-            <p style="margin: 0; color: #2e7d32; font-weight: bold;">Your OTP Code:</p>
-            <p id="generatedOtp"
-                style="font-size: 28px; letter-spacing: 8px; color: #1b5e20; margin: 10px 0; font-weight: bold;"></p>
-            <p style="margin: 0; font-size: 12px; color: #666;">(For testing purposes only)</p>
+        <!-- Header -->
+        <div class="app-header">
+            <a href="index.html" class="back-btn">&#8592;</a>
+            <h1>OTP Verification</h1>
         </div>
 
-        <div class="otp-container" id="otpInputs">
-            <input type="number" class="otp-box" maxlength="1" oninput="moveFocus(this, 1)"
-                onkeydown="handleBackspace(event, this, 1)">
-            <input type="number" class="otp-box" maxlength="1" oninput="moveFocus(this, 2)"
-                onkeydown="handleBackspace(event, this, 2)">
-            <input type="number" class="otp-box" maxlength="1" oninput="moveFocus(this, 3)"
-                onkeydown="handleBackspace(event, this, 3)">
-            <input type="number" class="otp-box" maxlength="1" oninput="moveFocus(this, 4)"
-                onkeydown="handleBackspace(event, this, 4)">
-            <input type="number" class="otp-box" maxlength="1" oninput="moveFocus(this, 5)"
-                onkeydown="handleBackspace(event, this, 5)">
-            <input type="number" class="otp-box" maxlength="1" oninput="moveFocus(this, 6)"
-                onkeydown="handleBackspace(event, this, 6)">
+        <div class="container">
+
+            <!-- Logo Area -->
+            <div class="otp-logo-container">
+                <!-- Placeholder for the SLC Logo from screenshot -->
+                <img src="https://via.placeholder.com/200x200?text=SLC+Logo" alt="SLC Logo" class="otp-logo">
+            </div>
+
+            <h2 style="text-align: left; font-size: 20px;">Verify Your OTP</h2>
+            <p style="text-align: left; color: #555;">
+                Enter the 6-digit code sent to <br>
+                <strong id="displayMobile">+91 ...</strong>
+            </p>
+
+            <!-- OTP Inputs -->
+            <div class="otp-inputs">
+                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 0)"
+                    onkeydown="handleBackspace(event, this, 0)">
+                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 1)"
+                    onkeydown="handleBackspace(event, this, 1)">
+                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 2)"
+                    onkeydown="handleBackspace(event, this, 2)">
+                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 3)"
+                    onkeydown="handleBackspace(event, this, 3)">
+                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 4)"
+                    onkeydown="handleBackspace(event, this, 4)">
+                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 5)"
+                    onkeydown="handleBackspace(event, this, 5)">
+            </div>
+
+            <!-- Dev Only Display -->
+            <p style="text-align:center; color:blue; font-size:12px; display:none;" id="otpDisplay">
+                Your OTP is: <span id="generatedOtp"></span>
+            </p>
+            <p id="otpMsg" class="error"></p>
+
+            <!-- Continue Button -->
+            <button class="primary-btn" onclick="submitOtp()">Continue</button>
+
+            <p class="link-text">
+                <span id="timer-text">Resend Code in <span id="timer">30</span>s</span>
+                <a href="#" id="resend-link" onclick="handleResend()" style="display:none;">Resend OTP</a>
+            </p>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="index.html" style="color: #999; text-decoration: none; font-size: 14px;">Back to Login</a>
+            </div>
+
         </div>
 
-        <button onclick="submitOtp()">Verify</button>
-
-        <div id="resend-container" style="margin-top: 20px; font-size: 14px; color: #666;">
-            Didn't receive code?
-            <span id="timer-text">Wait <span id="timer">30</span>s</span>
-            <a id="resend-link" onclick="handleResend()" class="change-link" style="display: none;">Resend OTP</a>
-        </div>
-
-        <p id="otpMsg" class="error"></p>
-    </div>
-
-    <script src="js/script.js"></script>
-    <script>
-        // Use consolidated logic from script.js
-        document.addEventListener("DOMContentLoaded", () => {
-            initOtpPage();
-        });
-    </script>
+        <script src="js/script.js"></script>
+        <script>
+            // Inline initialization
+            document.addEventListener("DOMContentLoaded", initOtpPage);
+        </script>
 </body>
 
 </html>

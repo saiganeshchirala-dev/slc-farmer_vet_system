@@ -6,148 +6,16 @@
     <title>SLC Farmer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Specific Styles for Farmer Dashboard matching the image */
-        body {
-            background-color: #f5f5f5;
-        }
-
-        .header {
-            background-color: #2e7d32;
-            /* Vibrant green from image */
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .header-icon {
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .profile-icon {
-            width: 32px;
-            height: 32px;
-            background: #e0e0e0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #757575;
-            cursor: pointer;
-        }
-
-        .profile-icon {
-            width: 32px;
-            height: 32px;
-            background: #e0e0e0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #757575;
-            cursor: pointer;
-            position: relative;
-        }
-
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s;
-            cursor: pointer;
-            height: 110px;
-            /* Fixed height for uniformity */
-            justify-content: center;
-        }
-
-        .card:active {
-            transform: scale(0.95);
-        }
-
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-            object-fit: contain;
-        }
-
-        .card-title {
-            font-size: 12px;
-            color: #333;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        .footer-card-container {
-            padding: 0 20px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .footer-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-        }
-
-        .footer-card img {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
-            object-fit: contain;
-        }
-
-        .footer-card-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 360px) {
-            .dashboard-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
 </head>
 
-<body>
+<body style="background-color: #f4f6f8;">
 
-    <div class="header">
-        <div class="header-icon">☰</div>
+    <!-- Header -->
+    <div class="app-header">
+        <div class="back-btn" style="font-size: 24px;">&#9776;</div> <!-- Hamburger Menu -->
         <h1>SLC farmer <span class="user-name-display"
-                style="font-size: 14px; margin-left: 10px; font-weight: normal;"></span></h1>
-        <div class="profile-icon" onclick="logoutFunction()" title="Logout">👤</div>
+                style="font-size: 14px; font-weight: normal; margin-left: 5px;"></span></h1>
+        <div style="font-size: 24px; cursor: pointer;" onclick="logoutFunction()" title="Logout">&#128100;</div>
     </div>
 
     <script>
@@ -156,64 +24,68 @@
 
     <div class="dashboard-grid">
         <!-- Card 1: My Profile -->
-        <div class="card" onclick="alert('Profile Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" class="card-icon">
-            <div class="card-title">My Profile</div>
+        <div class="dash-card" onclick="alert('Profile Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile">
+            <div>My Profile</div>
         </div>
 
         <!-- Card 2: My Animals -->
-        <div class="card" onclick="alert('Animals Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/2674/2674068.png" alt="Animals" class="card-icon">
-            <div class="card-title">My Animals</div>
+        <div class="dash-card" onclick="alert('Animals Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2674/2674068.png" alt="Animals">
+            <div>My Animals</div>
         </div>
 
         <!-- Card 3: Vaccinations -->
-        <div class="card" onclick="alert('Vaccinations Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/2855/2855589.png" alt="Vaccinations" class="card-icon">
-            <div class="card-title">Vaccinations</div>
+        <div class="dash-card" onclick="alert('Vaccinations Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2855/2855589.png" alt="Vaccinations">
+            <div>Vaccinations</div>
         </div>
 
         <!-- Card 4: Deworming -->
-        <div class="card" onclick="alert('Deworming Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/2965/2965357.png" alt="Deworming" class="card-icon">
-            <div class="card-title">Deworming</div>
+        <div class="dash-card" onclick="alert('Deworming Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2965/2965357.png" alt="Deworming">
+            <div>Deworming</div>
         </div>
 
         <!-- Card 5: Breeding -->
-        <div class="card" onclick="alert('Breeding Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/3199/3199852.png" alt="Breeding" class="card-icon">
-            <div class="card-title">Breeding</div>
+        <div class="dash-card" onclick="alert('Breeding Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3199/3199852.png" alt="Breeding">
+            <div>Breeding</div>
         </div>
 
         <!-- Card 6: Observed Problems -->
-        <div class="card" onclick="alert('Observed Problems Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Problems" class="card-icon">
-            <div class="card-title">Observed Problems</div>
+        <div class="dash-card" onclick="alert('Observed Problems Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Problems">
+            <div>Observed Problems</div>
         </div>
 
         <!-- Card 7: Tips -->
-        <div class="card" onclick="alert('Tips Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/2983/2983818.png" alt="Tips" class="card-icon">
-            <div class="card-title">Tips</div>
+        <div class="dash-card" onclick="alert('Tips Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2983/2983818.png" alt="Tips">
+            <div>Tips</div>
         </div>
 
         <!-- Card 8: Ration Calculator -->
-        <div class="card" onclick="alert('Ration Calculator Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/2653/2653248.png" alt="Calculator" class="card-icon">
-            <div class="card-title">Ration Calculator</div>
+        <div class="dash-card" onclick="alert('Ration Calculator Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2653/2653248.png" alt="Calculator">
+            <div>Ration Calculator</div>
         </div>
 
         <!-- Card 9: Ayurvedic Practice -->
-        <div class="card" onclick="alert('Ayurvedic Practice Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/2921/2921829.png" alt="Ayurvedic" class="card-icon">
-            <div class="card-title">Ayurvedic Practice</div>
+        <div class="dash-card" onclick="alert('Ayurvedic Practice Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2921/2921829.png" alt="Ayurvedic">
+            <div>Ayurvedic Practice</div>
         </div>
     </div>
 
-    <div class="footer-card-container">
-        <div class="footer-card" onclick="alert('Market Clicked')">
-            <img src="https://cdn-icons-png.flaticon.com/512/3043/3043888.png" alt="Market">
-            <div class="footer-card-title">Animal Market</div>
+    <!-- Footer Market Card -->
+    <div style="padding: 0 20px 20px;">
+        <div class="dash-card"
+            style="flex-direction: row; padding: 15px; justify-content: flex-start; min-height: auto;"
+            onclick="alert('Market Clicked')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3043/3043888.png" alt="Market"
+                style="margin-bottom: 0; margin-right: 15px; width: 40px; height: 40px;">
+            <div style="font-size: 16px; font-weight: 600;">Animal Market</div>
         </div>
     </div>
 

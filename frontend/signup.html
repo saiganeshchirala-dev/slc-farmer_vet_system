@@ -10,63 +10,91 @@
 
 <body>
 
-    <div class="container">
-        <h2>Create Account</h2>
+    <!-- Header -->
+    <div class="app-header">
+        <a href="index.html" class="back-btn">&#8592;</a>
+        <h1>Sign Up</h1>
+    </div>
 
-        <!-- Role Selection -->
-        <div class="role-select">
-            <label><input type="radio" name="role" value="farmer" checked> Farmer</label>
-            <label><input type="radio" name="role" value="paravet"> ParaVet</label>
-            <label><input type="radio" name="role" value="vet"> Veterinarian</label>
-        </div>
+    <div class="container">
 
         <form onsubmit="registerUser(event)">
-            <input type="text" id="signupName" placeholder="Full Name" required>
-            <input type="tel" id="signupMobile" placeholder="Mobile Number" required>
 
-            <!-- Farmer -->
+            <!-- Role Selection -->
+            <div class="radio-group">
+                <label class="radio-item">
+                    <input type="radio" name="role" value="farmer" checked> Farmer
+                </label>
+                <label class="radio-item">
+                    <input type="radio" name="role" value="paravet"> ParaVet
+                </label>
+                <label class="radio-item">
+                    <input type="radio" name="role" value="vet"> Veterinarian
+                </label>
+            </div>
+
+            <div class="input-group">
+                <label>Full Name*</label>
+                <input type="text" id="signupName" required>
+            </div>
+
+            <div class="input-group">
+                <label>Mobile Number*</label>
+                <input type="tel" id="signupMobile" required>
+            </div>
+
+            <!-- Farmer Fields -->
             <div class="role-fields" id="farmer">
-                <label class="input-label">Date of Birth</label>
-                <input type="date" class="dob-input" required>
-                <input type="text" placeholder="Village" required>
-                <input type="text" placeholder="Mandal" required>
-                <input type="text" placeholder="District" required>
-                <input type="text" placeholder="State" required>
-                <input type="text" placeholder="Language preference" required>
+                <div class="input-group">
+                    <label>Date of Birth*</label>
+                    <input type="date" class="dob-input" required>
+                </div>
+                <div class="input-group"><label>Village*</label><input type="text" placeholder="" required></div>
+                <div class="input-group"><label>Mandal*</label><input type="text" placeholder="" required></div>
+                <div class="input-group"><label>District*</label><input type="text" placeholder="" required></div>
+                <div class="input-group"><label>State*</label><input type="text" placeholder="" required></div>
+                <div class="input-group"><label>Language Preference</label><input type="text" placeholder="" required>
+                </div>
             </div>
 
-            <!-- ParaVet -->
+            <!-- ParaVet Fields -->
             <div class="role-fields hidden" id="paravet">
-                <label class="input-label">Date of Birth</label>
-                <input type="date" class="dob-input" required>
-                <input type="text" placeholder="Village" required>
-                <input type="text" placeholder="Mandal" required>
-                <input type="text" placeholder="District" required>
-                <input type="text" placeholder="State" required>
-                <input type="text" placeholder="Role" required>
-                <input type="text" placeholder="Working area">
+                <div class="input-group">
+                    <label>Date of Birth*</label>
+                    <input type="date" class="dob-input" required>
+                </div>
+                <div class="input-group"><label>Village*</label><input type="text" required></div>
+                <div class="input-group"><label>Mandal*</label><input type="text" required></div>
+                <div class="input-group"><label>District*</label><input type="text" required></div>
+                <div class="input-group"><label>State*</label><input type="text" required></div>
+                <div class="input-group"><label>Role*</label><input type="text" required></div>
+                <div class="input-group"><label>Working Area*</label><input type="text" required></div>
             </div>
 
-            <!-- Veterinarian -->
+            <!-- Vet Fields -->
             <div class="role-fields hidden" id="vet">
-                <label class="input-label">Date of Birth</label>
-                <input type="date" class="dob-input" required>
-                <input type="text" placeholder="Village" required>
-                <input type="text" placeholder="Mandal" required>
-                <input type="text" placeholder="District" required>
-                <input type="text" placeholder="State" required>
-                <input type="text" placeholder="VCI/State vet Council Reg" required>
-                <input type="text" placeholder="Degree" required>
-                <input type="text" placeholder="Official Email" required>
-                <input type="text" placeholder="Clinical/Hospital" required>
-                <input type="text" placeholder="Working Area" required>
+                <div class="input-group">
+                    <label>Date of Birth*</label>
+                    <input type="date" class="dob-input" required>
+                </div>
+                <div class="input-group"><label>Village*</label><input type="text" required></div>
+                <div class="input-group"><label>Mandal*</label><input type="text" required></div>
+                <div class="input-group"><label>District*</label><input type="text" required></div>
+                <div class="input-group"><label>State*</label><input type="text" required></div>
+                <div class="input-group"><label>VCI/State Reg No*</label><input type="text" required></div>
+                <div class="input-group"><label>Degree*</label><input type="text" required></div>
+                <div class="input-group"><label>Official Email*</label><input type="text" required></div>
+                <div class="input-group"><label>Clinical/Hospital Name*</label><input type="text" required></div>
+                <div class="input-group"><label>Working Area*</label><input type="text" required></div>
             </div>
 
-            <button type="submit">Create Account</button>
+            <button type="submit" class="primary-btn">Create Account</button>
         </form>
     </div>
 
     <script src="js/script.js"></script>
 </body>
+
+</html>
 
 </html>
