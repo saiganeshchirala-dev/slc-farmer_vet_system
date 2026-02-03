@@ -11,22 +11,27 @@
 <body>
 
     <div class="container" id="loginContainer">
-        <div id="mobileSection">
-            <h2>Login With Mobile Number</h2>
-            <form onsubmit="handleSignin(event)">
-                <input type="tel" id="signinMobile" placeholder="Enter Mobile Number" required>
-                <button type="submit">Get OTP</button>
-            </form>
-            <p class="link-text">
-                Don’t have an account?
-                <a href="signup.html">Sign Up</a>
-            </p>
+        <div class="container" id="loginContainer">
+            <!-- Logo / Intro -->
+            <h2 style="margin-bottom: 5px;">Welcome to</h2>
+            <h3 style="margin-top: 0; color: #333;">Farmers Vet System</h3>
+
+            <div id="mobileSection">
+                <h4 style="text-align:center; color: #555;">Login With Mobile Number</h4>
+                <form onsubmit="handleSignin(event)">
+                    <input type="tel" id="signinMobile" placeholder="Enter Mobile Number" required>
+                    <button type="submit">Get OTP</button>
+                </form>
+                <p class="link-text">
+                    Don’t have an account?
+                    <a href="signup.html">Sign Up</a>
+                </p>
+            </div>
+
+            <p id="signinMsg" class="error"></p>
         </div>
 
-        <p id="signinMsg" class="error"></p>
-    </div>
-
-    <script src="js/script.js"></script>
+        <script src="js/script.js"></script>
 </body>
 
 </html>

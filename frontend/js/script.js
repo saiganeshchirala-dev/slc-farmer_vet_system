@@ -55,11 +55,12 @@ async function handleSignin(event) {
         try {
             await apiCall(`/users/${mobile}`, "GET");
         } catch (checkErr) {
-            // If 404/User not found, redirect to Signup
+            // If 404/User not found, show error on current page
             if (checkErr.message.toLowerCase().includes("not found")) {
-                alert("This mobile number is not registered. Redirecting to Sign Up page...");
-                window.location.href = "signup.html";
-                return;
+                const msg = document.getElementById("signinMsg");
+                msg.innerText = "Invalid Number: This mobile number is not registered.";
+                msg.style.color = "red";
+                return; // Stop execution, stay on page
             }
             throw checkErr; // Other errors
         }
