@@ -32,6 +32,14 @@ class Settings(BaseSettings):
         )
 
     # CORS
-    ALLOWED_ORIGINS: list = ["*"]  # In production, specify actual frontend URL
+    ALLOWED_ORIGINS: list = [
+        "http://localhost",
+        "http://localhost:8000",
+        "http://127.0.0.1",
+        "http://127.0.0.1:8000",
+        "https://slcvet.com",
+        "http://slcvet.com",
+        "*" 
+    ]
 
 settings = Settings()
