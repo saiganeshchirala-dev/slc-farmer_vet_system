@@ -30,6 +30,29 @@ class User(UserBase):
     class Config:
         from_attributes = True
 
+# --- ANIMAL SCHEMAS ---
+class AnimalBase(BaseModel):
+    name: str
+    species: str
+    breed: Optional[str] = None
+    age: Optional[int] = None
+    gender: Optional[str] = None
+    tag_number: Optional[str] = None
+
+class AnimalCreate(AnimalBase):
+    pass
+
+class Animal(AnimalBase):
+    id: int
+    owner_id: int
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+class UserWithAnimals(User):
+    animals: list[Animal] = []
+
 class OTPRequest(BaseModel):
     mobile_number: str
 

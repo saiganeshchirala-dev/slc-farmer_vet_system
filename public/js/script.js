@@ -3,8 +3,8 @@
 const API_BASE_URL = (
     window.location.hostname === "localhost" ||
     window.location.hostname === "127.0.0.1"
-) ? "http://localhost:5000/api"
-    : "/api";
+) ? "http://localhost:8000/api/v1"
+    : "/api/v1";
 
 const SITE_URL = (
     window.location.hostname === "localhost" ||

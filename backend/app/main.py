@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .db.database import engine, Base
-from .api.v1.endpoints import auth, users
+from .api.v1.endpoints import auth, users, animals
 from .core.config import settings
 
 # Create Database Tables
@@ -27,11 +27,12 @@ app.add_middleware(
 
 app.include_router(auth.router, prefix=settings.API_V1_STR)
 app.include_router(users.router, prefix=settings.API_V1_STR)
+app.include_router(animals.router, prefix=settings.API_V1_STR)
 
 
 # --- Static Files & Frontend Routes ---
 # Define frontend directory
-frontend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../frontend"))
+frontend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../public"))
 
 # Serve cleanup URLs (e.g. /signup -> signup.html)
 @app.get("/signup")

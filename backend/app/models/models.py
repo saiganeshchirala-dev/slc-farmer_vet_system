@@ -25,9 +25,28 @@ class User(Base):
     
     created_at = Column(DateTime, default=datetime.utcnow)
 
+    # Relationships
+    animals = relationship("Animal", back_populates="owner")
+
+class Animal(Base):
+    __tablename__ = "animals"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    species = Column(String) # Cattle, Buffalo, Sheep, Goat, etc.
+    breed = Column(String, nullable=True)
+    age = Column(Integer, nullable=True)
+    gender = Column(String, nullable=True)
+    tag_number = Column(String, unique=True, index=True, nullable=True)
+    
+    owner_id = Column(Integer, ForeignKey("users.id"))
+    owner = relationship("User", back_populates="animals")
+    
+    created_at = Column(DateTime, default=datetime.utcnow)
+
 class OTP(Base):
     __tablename__ = "otps"
-
+    # ... (no changes to OTP)
     id = Column(Integer, primary_key=True, index=True)
     mobile_number = Column(String, index=True)
     otp_code = Column(String)

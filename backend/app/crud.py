@@ -61,3 +61,19 @@ def verify_otp_db(db: Session, mobile_number: str, otp_code: str):
     otp_record.is_verified = True
     db.commit()
     return True
+# --- ANIMAL CRUD ---
+def create_animal(db: Session, animal: schemas.AnimalCreate, owner_id: int):
+    db_animal = models.Animal(
+        **animal.model_dump(),
+        owner_id=owner_id
+    )
+    db.add(db_animal)
+    db.commit()
+    db.refresh(db_animal)
+    return db_animal
+
+def get_user_animals(db: Session, owner_id: int):
+    return db.query(models.Animal).filter(models.Animal.owner_id == owner_id).all()
+
+def get_animal_by_tag(db: Session, tag_number: str):
+    return db.query(models.Animal).filter(models.Animal.tag_number == tag_number).first()
