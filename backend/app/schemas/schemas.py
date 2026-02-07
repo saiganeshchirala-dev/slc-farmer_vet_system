@@ -40,3 +40,9 @@ class OTPVerify(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+class UserAuthResponse(BaseModel):
+    message: str
+    user: User
+    access_token: str
+    token_type: str
