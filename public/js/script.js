@@ -234,10 +234,18 @@ if (roleRadios.length > 0) {
 
 async function registerUser(event) {
     event.preventDefault();
+    console.log("Registering user...");
 
     const nameInput = document.getElementById("signupName");
     const mobileInput = document.getElementById("signupMobile");
-    const selectedRole = document.querySelector('input[name="role"]:checked').value;
+    const roleRadio = document.querySelector('input[name="role"]:checked');
+
+    if (!roleRadio) {
+        alert("Please select a role.");
+        return;
+    }
+
+    const selectedRole = roleRadio.value;
 
     // Base Data
     const userData = {
@@ -246,53 +254,41 @@ async function registerUser(event) {
         role: selectedRole
     };
 
-    // Get additional details based on role
-    const visibleSection = document.getElementById(selectedRole);
-    if (visibleSection) {
-        const inputs = visibleSection.querySelectorAll('input');
-        inputs.forEach(input => {
-            const val = input.value.trim();
-            const ph = input.placeholder ? input.placeholder.toLowerCase() : "";
-
-            if (input.type === 'date') {
-                const dobVal = val;
-                if (!dobVal) throw new Error("Date of Birth is required");
-
-                // Age Validation (> 18)
-                const dobDate = new Date(dobVal);
-                const today = new Date();
-                let age = today.getFullYear() - dobDate.getFullYear();
-                const m = today.getMonth() - dobDate.getMonth();
-                if (m < 0 || (m === 0 && today.getDate() < dobDate.getDate())) {
-                    age--;
-                }
-
-                if (age < 18) {
-                    throw new Error("You must be at least 18 years old to register.");
-                }
-
-                userData.dob = dobVal;
-            }
-            else if (ph === "village") userData.village = val;
-            else if (ph === "mandal") userData.mandal = val;
-            else if (ph === "district") userData.district = val;
-            else if (ph === "state") userData.state = val;
-            else if (ph.includes("language")) userData.language = val;
-            else if (ph.includes("vci") || ph.includes("reg")) userData.registration_num = val;
-            else if (ph.includes("degree")) userData.degree = val;
-            else if (ph.includes("email")) userData.email = val;
-            else if (ph.includes("clinical") || ph.includes("hospital")) userData.hospital_name = val;
-            else if (ph.includes("working area")) userData.working_area = val;
-            else if (ph.includes("qualification")) userData.qualification = val;
-        });
-    }
-
-    // Defaults for required fields in schema
-    if (!userData.state) userData.state = "N/A";
-    if (!userData.district) userData.district = "N/A";
-
     try {
+        // Get additional details based on role
+        const visibleSection = document.getElementById(selectedRole);
+        if (visibleSection) {
+            const inputs = visibleSection.querySelectorAll('input[data-field]');
+            inputs.forEach(input => {
+                const field = input.getAttribute('data-field');
+                const val = input.value.trim();
+
+                if (field === 'dob') {
+                    if (!val) throw new Error("Date of Birth is required");
+                    // Age Validation (> 18)
+                    const dobDate = new Date(val);
+                    const today = new Date();
+                    let age = today.getFullYear() - dobDate.getFullYear();
+                    const m = today.getMonth() - dobDate.getMonth();
+                    if (m < 0 || (m === 0 && today.getDate() < dobDate.getDate())) {
+                        age--;
+                    }
+                    if (age < 18) {
+                        throw new Error("You must be at least 18 years old to register.");
+                    }
+                }
+                userData[field] = val;
+            });
+        }
+
+        // Defaults for required fields in schema
+        if (!userData.state) userData.state = "N/A";
+        if (!userData.district) userData.district = "N/A";
+
+        console.log("Sending userData:", userData);
+
         const response = await apiCall("/users/signup", "POST", userData);
+        console.log("Signup success:", response);
 
         // Auto-login logic
         localStorage.setItem("access_token", response.access_token);
@@ -310,6 +306,7 @@ async function registerUser(event) {
         window.location.href = `dashboard_${response.user.role}.html`;
 
     } catch (error) {
+        console.error("Signup error:", error);
         alert("Registration Failed: " + error.message);
     }
 }
