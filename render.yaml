@@ -3,7 +3,7 @@ services:
     name: slc-farmer-vet-api
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn backend.app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
+    startCommand: gunicorn wsgi:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHONPATH
         value: .
