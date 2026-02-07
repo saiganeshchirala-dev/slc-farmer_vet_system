@@ -41,6 +41,12 @@ async def read_signup():
         return FileResponse(os.path.join(frontend_dir, "signup.html"))
     return {"error": "File not found"}
 
+@app.get("/otp")
+async def read_otp():
+    if os.path.exists(os.path.join(frontend_dir, "otp.html")):
+        return FileResponse(os.path.join(frontend_dir, "otp.html"))
+    return {"error": "File not found"}
+
 # Mount Static Files (Catch-all for other files)
 if os.path.exists(frontend_dir):
     app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
