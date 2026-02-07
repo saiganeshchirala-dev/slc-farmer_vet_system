@@ -29,6 +29,27 @@ app.include_router(auth.router, prefix=settings.API_V1_STR)
 app.include_router(users.router, prefix=settings.API_V1_STR)
 app.include_router(animals.router, prefix=settings.API_V1_STR)
 
+@app.get("/health")
+async def health_check():
+    from .db.database import engine
+    from sqlalchemy import text
+    try:
+        with engine.connect() as connection:
+            connection.execute(text("SELECT 1"))
+        db_status = "Connected"
+    except Exception as e:
+        db_status = f"Disconnected: {str(e)}"
+    
+    db_type = "PostgreSQL" if "postgres" in str(engine.url) else "SQLite"
+    
+    return {
+        "status": "Healthy",
+        "database": {
+            "type": db_type,
+            "connection": db_status
+        }
+    }
+
 
 # --- Static Files & Frontend Routes ---
 # Define frontend directory
