@@ -68,7 +68,7 @@ async function handleSignin(event) {
             // If 404/User not found, redirect to Signup
             if (checkErr.message.toLowerCase().includes("not found")) {
                 alert("This mobile number is not registered. Redirecting to Sign Up page...");
-                window.location.href = "signup.html";
+                window.location.href = "/signup";
                 return;
             }
             throw checkErr; // Other errors
@@ -83,7 +83,7 @@ async function handleSignin(event) {
 
         // ONE-WAY FLOW: Always redirect to otp.html
         alert("OTP Sent! Please check the OTP displayed on the next page.");
-        window.location.href = "otp.html";
+        window.location.href = "/otp";
 
     } catch (error) {
         msg.innerText = error.message;
@@ -140,7 +140,7 @@ function initOtpPage() {
         displayEl.innerText = "+91 " + mobile;
     } else if (!mobile) {
         console.warn("No mobile number found in localStorage, redirecting to login.");
-        window.location.href = "index.html";
+        window.location.href = "/";
         return;
     }
 
@@ -194,7 +194,7 @@ async function handleResend() {
 
 function changeNumber() {
     localStorage.removeItem("verifyingMobile");
-    window.location.href = "index.html";
+    window.location.href = "/";
 }
 
 // ---------- SIGN UP ----------
@@ -399,7 +399,7 @@ async function verifyOtpBackend(enteredOtp) {
             window.location.href = `dashboard_${response.role}.html`;
         } else {
             alert("Verification successful. Please complete your registration.");
-            window.location.href = "signup.html";
+            window.location.href = "/signup";
         }
 
     } catch (error) {
@@ -455,7 +455,7 @@ function logoutFunction() {
         localStorage.removeItem("loggedInUser");
         localStorage.removeItem("verifyingMobile");
         localStorage.removeItem("generatedOtp");
-        window.location.href = "index.html";
+        window.location.href = "/";
     }
 }
 

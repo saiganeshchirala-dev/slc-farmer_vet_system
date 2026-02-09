@@ -3,95 +3,79 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Verify OTP</title>
+    <title>Verify OTP - slcvet.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .otp-wrapper {
-            text-align: center;
-        }
-
-        .mobile-display {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .change-link {
-            color: #00b140;
-            text-decoration: none;
-            font-weight: 600;
-            margin-left: 5px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
-<body>
+<body class="login-page">
 
-    <div class="container otp-wrapper">
-        <img src="logo.png" class="logo" alt="Logo">
-        <!-- Header -->
-        <div class="app-header">
-            <a href="index.html" class="back-btn">&#8592;</a>
-            <h1>OTP Verification</h1>
+    <!-- Header -->
+    <div class="app-header">
+        <a href="/" class="back-btn">&#8592;</a>
+        <h1>Verify Account</h1>
+    </div>
+
+    <div class="container" style="text-align: center;">
+
+        <!-- Logo Area -->
+        <div class="otp-logo-container">
+            <img src="https://via.placeholder.com/200x200?text=SLC+Logo" alt="SLC Logo" class="otp-logo">
         </div>
 
-        <div class="container">
+        <h2 style="font-size: 22px;">Security Verification</h2>
+        <p style="color: #666; margin-bottom: 20px;">
+            Enter the 6-digit code sent to <br>
+            <strong id="displayMobile" style="color: #00b341;">+91 ...</strong>
+        </p>
 
-            <!-- Logo Area -->
-            <div class="otp-logo-container">
-                <!-- Placeholder for the SLC Logo from screenshot -->
-                <img src="https://via.placeholder.com/200x200?text=SLC+Logo" alt="SLC Logo" class="otp-logo">
-            </div>
-
-            <h2 style="text-align: left; font-size: 20px;">Verify Your OTP</h2>
-            <p style="text-align: left; color: #555;">
-                Enter the 6-digit code sent to <br>
-                <strong id="displayMobile">+91 ...</strong>
-            </p>
-
-            <!-- OTP Inputs -->
-            <div class="otp-inputs">
-                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 0)"
-                    onkeydown="handleBackspace(event, this, 0)">
-                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 1)"
-                    onkeydown="handleBackspace(event, this, 1)">
-                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 2)"
-                    onkeydown="handleBackspace(event, this, 2)">
-                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 3)"
-                    onkeydown="handleBackspace(event, this, 3)">
-                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 4)"
-                    onkeydown="handleBackspace(event, this, 4)">
-                <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 5)"
-                    onkeydown="handleBackspace(event, this, 5)">
-            </div>
-
-            <!-- Dev Only Display -->
-            <p style="text-align:center; color:blue; font-size:12px; display:none;" id="otpDisplay">
-                Your OTP is: <span id="generatedOtp"></span>
-            </p>
-            <p id="otpMsg" class="error"></p>
-
-            <!-- Continue Button -->
-            <button class="primary-btn" onclick="submitOtp()">Continue</button>
-
-            <p class="link-text">
-                <span id="timer-text">Resend Code in <span id="timer">30</span>s</span>
-                <a href="#" id="resend-link" onclick="handleResend()" style="display:none;">Resend OTP</a>
-            </p>
-
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="index.html" style="color: #999; text-decoration: none; font-size: 14px;">Back to Login</a>
-            </div>
-
+        <!-- OTP Inputs -->
+        <div class="otp-inputs">
+            <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 0)"
+                onkeydown="handleBackspace(event, this, 0)">
+            <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 1)"
+                onkeydown="handleBackspace(event, this, 1)">
+            <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 2)"
+                onkeydown="handleBackspace(event, this, 2)">
+            <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 3)"
+                onkeydown="handleBackspace(event, this, 3)">
+            <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 4)"
+                onkeydown="handleBackspace(event, this, 4)">
+            <input type="tel" class="otp-box" maxlength="1" onkeyup="moveFocus(this, 5)"
+                onkeydown="handleBackspace(event, this, 5)">
         </div>
 
-        <script src="js/script.js"></script>
-        <script>
-            // Inline initialization
-            document.addEventListener("DOMContentLoaded", initOtpPage);
-        </script>
+        <!-- Dev Only Display -->
+        <div id="otpDisplay"
+            style="background: #e8f5e9; padding: 10px; border-radius: 8px; margin: 15px 0; display: none;">
+            <span style="color: #2e7d32; font-weight: 600;">System Message:</span>
+            Your code is <span id="generatedOtp" style="font-weight: 800; letter-spacing: 1px;"></span>
+        </div>
+
+        <p id="otpMsg" class="error"></p>
+
+        <button class="primary-btn" onclick="submitOtp()">Verify & Continue</button>
+
+        <p class="link-text">
+            <span id="timer-text" style="font-weight: 500;">Resend Code in <span id="timer"
+                    style="color: #d32f2f;">30</span>s</span>
+            <a href="#" id="resend-link" onclick="handleResend()" style="display:none;">Resend Code</a>
+        </p>
+
+        <div style="margin-top: 30px;">
+            <a href="/" style="color: #999; text-decoration: none; font-size: 14px; font-weight: 600;">Change Mobile
+                Number</a>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", initOtpPage);
+    </script>
 </body>
 
 </html>

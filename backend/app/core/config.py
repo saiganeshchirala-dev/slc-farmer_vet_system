@@ -8,6 +8,8 @@ load_dotenv()
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Farmers Vet System"
     API_V1_STR: str = "/api/v1"
+    BASE_URL: str = os.getenv("BASE_URL", "https://slcvet.com")
+
     
     # Security
     SECRET_KEY: str = os.getenv("SECRET_KEY", "supersecretkey")

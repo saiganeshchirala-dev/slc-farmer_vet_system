@@ -2,110 +2,129 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Account - slcvet.com</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="login-page">
 
-    <!-- Header -->
-    <div class="app-header">
-        <a href="/" class="back-btn">&#8592;</a>
-        <h1>Sign Up</h1>
-    </div>
+        <!-- Header -->
+        <div class="app-header">
+                <a href="/" class="back-btn">&#8592;</a>
+                <h1>Join slcvet.com</h1>
+        </div>
 
-    <div class="container">
+        <div class="container">
+                <h2 style="margin-top: 0; text-align: center;">Register</h2>
+                <p style="text-align: center; margin-bottom: 25px; color: #666;">Choose your role and provide your
+                        details</p>
 
-        <form onsubmit="registerUser(event)">
+                <form onsubmit="registerUser(event)">
 
-            <!-- Role Selection -->
-            <div class="radio-group">
-                <label class="radio-item">
-                    <input type="radio" name="role" value="farmer" checked> Farmer
-                </label>
-                <label class="radio-item">
-                    <input type="radio" name="role" value="paravet"> Paravet
-                </label>
-                <label class="radio-item">
-                    <input type="radio" name="role" value="vet"> Veterinarian
-                </label>
-            </div>
+                        <!-- Role Selection -->
+                        <label style="text-align: center; display: block; margin-bottom: 12px;">I am a...</label>
+                        <div class="radio-group">
+                                <label class="radio-item">
+                                        <input type="radio" name="role" value="farmer" checked> Farmer
+                                </label>
+                                <label class="radio-item">
+                                        <input type="radio" name="role" value="paravet"> Paravet
+                                </label>
+                                <label class="radio-item">
+                                        <input type="radio" name="role" value="vet"> Vet
+                                </label>
+                        </div>
 
-            <div class="input-group">
-                <label>Full Name*</label>
-                <input type="text" id="signupName" required>
-            </div>
+                        <div class="input-group">
+                                <label>Full Name*</label>
+                                <input type="text" id="signupName" placeholder="Your full name" required>
+                        </div>
 
-            <div class="input-group">
-                <label>Mobile Number*</label>
-                <input type="tel" id="signupMobile" required>
-            </div>
+                        <div class="input-group">
+                                <label>Mobile Number*</label>
+                                <input type="tel" id="signupMobile" placeholder="10 digit mobile number" required>
+                        </div>
 
-            <!-- Farmer Fields -->
-            <div class="role-fields" id="farmer">
-                <div class="input-group">
-                    <label>Date of Birth*</label>
-                    <input type="date" class="dob-input" data-field="dob" required>
+                        <!-- Farmer Fields -->
+                        <div class="role-fields" id="farmer">
+                                <div class="input-group">
+                                        <label>Date of Birth*</label>
+                                        <input type="date" class="dob-input" data-field="dob" required>
+                                </div>
+                                <div class="input-group"><label>Village*</label><input type="text" data-field="village"
+                                                placeholder="Village name" required></div>
+                                <div class="input-group"><label>Mandal*</label><input type="text" data-field="mandal"
+                                                placeholder="Mandal name" required></div>
+                                <div class="input-group"><label>District*</label><input type="text"
+                                                data-field="district" placeholder="District name" required></div>
+                                <div class="input-group"><label>State*</label><input type="text" data-field="state"
+                                                placeholder="State name" required></div>
+                                <div class="input-group"><label>Language Preference</label><input type="text"
+                                                data-field="language" placeholder="English, Telugu, etc." required>
+                                </div>
+                        </div>
+
+                        <!-- ParaVet Fields -->
+                        <div class="role-fields hidden" id="paravet">
+                                <div class="input-group">
+                                        <label>Date of Birth*</label>
+                                        <input type="date" class="dob-input" data-field="dob" required>
+                                </div>
+                                <div class="input-group"><label>Village*</label><input type="text" data-field="village"
+                                                placeholder="Village name" required></div>
+                                <div class="input-group"><label>Mandal*</label><input type="text" data-field="mandal"
+                                                placeholder="Mandal name" required></div>
+                                <div class="input-group"><label>District*</label><input type="text"
+                                                data-field="district" placeholder="District name" required></div>
+                                <div class="input-group"><label>State*</label><input type="text" data-field="state"
+                                                placeholder="State name" required></div>
+                                <div class="input-group"><label>Role Detail*</label><input type="text"
+                                                data-field="qualification" placeholder="Qualification" required></div>
+                                <div class="input-group"><label>Working Area*</label><input type="text"
+                                                data-field="working_area" placeholder="Service area" required></div>
+                        </div>
+
+                        <!-- Vet Fields -->
+                        <div class="role-fields hidden" id="vet">
+                                <div class="input-group">
+                                        <label>Date of Birth*</label>
+                                        <input type="date" class="dob-input" data-field="dob" required>
+                                </div>
+                                <div class="input-group"><label>Village*</label><input type="text" data-field="village"
+                                                placeholder="Village name" required></div>
+                                <div class="input-group"><label>Mandal*</label><input type="text" data-field="mandal"
+                                                placeholder="Mandal name" required></div>
+                                <div class="input-group"><label>District*</label><input type="text"
+                                                data-field="district" placeholder="District name" required></div>
+                                <div class="input-group"><label>State*</label><input type="text" data-field="state"
+                                                placeholder="State name" required></div>
+                                <div class="input-group"><label>VCI/State Reg No*</label><input type="text"
+                                                data-field="registration_num" placeholder="Registration number"
+                                                required></div>
+                                <div class="input-group"><label>Degree*</label><input type="text" data-field="degree"
+                                                placeholder="Degree" required></div>
+                                <div class="input-group"><label>Official Email*</label><input type="text"
+                                                data-field="email" placeholder="Email address" required></div>
+                                <div class="input-group"><label>Clinical/Hospital Name*</label><input type="text"
+                                                data-field="hospital_name" placeholder="Hospital name" required></div>
+                                <div class="input-group"><label>Working Area*</label><input type="text"
+                                                data-field="working_area" placeholder="Service area" required></div>
+                        </div>
+
+                        <button type="submit" class="primary-btn">Create Official Account</button>
+                </form>
+
+                <div class="link-text">
+                        Already have an account? <a href="/">Login here</a>
                 </div>
-                <div class="input-group"><label>Village*</label><input type="text" data-field="village" required></div>
-                <div class="input-group"><label>Mandal*</label><input type="text" data-field="mandal" required></div>
-                <div class="input-group"><label>District*</label><input type="text" data-field="district" required>
-                </div>
-                <div class="input-group"><label>State*</label><input type="text" data-field="state" required></div>
-                <div class="input-group"><label>Language Preference</label><input type="text" data-field="language"
-                        required>
-                </div>
-            </div>
+        </div>
 
-            <!-- ParaVet Fields -->
-            <div class="role-fields hidden" id="paravet">
-                <div class="input-group">
-                    <label>Date of Birth*</label>
-                    <input type="date" class="dob-input" data-field="dob" required>
-                </div>
-                <div class="input-group"><label>Village*</label><input type="text" data-field="village" required></div>
-                <div class="input-group"><label>Mandal*</label><input type="text" data-field="mandal" required></div>
-                <div class="input-group"><label>District*</label><input type="text" data-field="district" required>
-                </div>
-                <div class="input-group"><label>State*</label><input type="text" data-field="state" required></div>
-                <div class="input-group"><label>Role Detail*</label><input type="text" data-field="qualification"
-                        required></div>
-                <div class="input-group"><label>Working Area*</label><input type="text" data-field="working_area"
-                        required></div>
-            </div>
-
-            <!-- Vet Fields -->
-            <div class="role-fields hidden" id="vet">
-                <div class="input-group">
-                    <label>Date of Birth*</label>
-                    <input type="date" class="dob-input" data-field="dob" required>
-                </div>
-                <div class="input-group"><label>Village*</label><input type="text" data-field="village" required></div>
-                <div class="input-group"><label>Mandal*</label><input type="text" data-field="mandal" required></div>
-                <div class="input-group"><label>District*</label><input type="text" data-field="district" required>
-                </div>
-                <div class="input-group"><label>State*</label><input type="text" data-field="state" required></div>
-                <div class="input-group"><label>VCI/State Reg No*</label><input type="text"
-                        data-field="registration_num" required></div>
-                <div class="input-group"><label>Degree*</label><input type="text" data-field="degree" required></div>
-                <div class="input-group"><label>Official Email*</label><input type="text" data-field="email" required>
-                </div>
-                <div class="input-group"><label>Clinical/Hospital Name*</label><input type="text"
-                        data-field="hospital_name" required></div>
-                <div class="input-group"><label>Working Area*</label><input type="text" data-field="working_area"
-                        required></div>
-            </div>
-
-            <button type="submit" class="primary-btn">Create Account</button>
-        </form>
-        <p class="link-text" style="text-align: center; margin-top: 20px;">
-            Already have an account? <a href="index.html">Login</a>
-        </p>
-    </div>
-
-    <script src="js/script.js"></script>
+        <script src="js/script.js"></script>
 </body>
 
 </html>
