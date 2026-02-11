@@ -17,6 +17,11 @@ def check_db():
     
     # Connect directly to the database
     engine = create_engine(SQLALCHEMY_DATABASE_URL)
+    
+    # Ensure tables exist
+    from app.db.database import Base
+    Base.metadata.create_all(bind=engine)
+    
     SessionLocal = sessionmaker(bind=engine)
     db = SessionLocal()
     
