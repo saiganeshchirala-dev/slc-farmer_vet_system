@@ -1,7 +1,7 @@
 {
     "info": {
         "_postman_id": "slc-farmer-vet-collection",
-        "name": "SLC Farmer Vet System API",
+        "name": "slcvet.com",
         "description": "API collection for the Farmer-ParaVet-Vet consultation and registration system.",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
