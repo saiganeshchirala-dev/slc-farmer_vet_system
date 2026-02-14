@@ -1,0 +1,148 @@
+{  
+    "info": {  
+        "name": "Farmer Vet API",  
+        "description": "Postman collection for Farmer Vet API",  
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"  
+    },  
+    "item": [  
+        {  
+            "name": "Authentication",  
+            "item": [  
+                {  
+                    "name": "Login",  
+                    "request": {  
+                        "method": "POST",  
+                        "header": [  
+                            {  
+                                "key": "Content-Type",  
+                                "value": "application/json"  
+                            }  
+                        ],  
+                        "body": {  
+                            "mode": "raw",  
+                            "raw": "{\n  \"username\": \"{username}\",\n  \"password\": \"{password}\"\n}"  
+                        },  
+                        "url": "{{baseUrl}}/auth/login"  
+                    }  
+                },  
+                {  
+                    "name": "Logout",  
+                    "request": {  
+                        "method": "POST",  
+                        "header": [  
+                            {  
+                                "key": "Authorization",  
+                                "value": "Bearer {{token}}"  
+                            }  
+                        ],  
+                        "url": "{{baseUrl}}/auth/logout"  
+                    }  
+                }  
+            ]  
+        },  
+        {  
+            "name": "Users",  
+            "item": [  
+                {  
+                    "name": "Create User",  
+                    "request": {  
+                        "method": "POST",  
+                        "header": [  
+                            {  
+                                "key": "Content-Type",  
+                                "value": "application/json"  
+                            }  
+                        ],  
+                        "body": {  
+                            "mode": "raw",  
+                            "raw": "{\n  \"username\": \"{username}\",\n  \"email\": \"{email}\",\n  \"password\": \"{password}\"\n}"  
+                        },  
+                        "url": "{{baseUrl}}/users"  
+                    }  
+                },  
+                {  
+                    "name": "Get User",  
+                    "request": {  
+                        "method": "GET",  
+                        "url": "{{baseUrl}}/users/{userId}",  
+                        "header": [  
+                            {  
+                                "key": "Authorization",  
+                                "value": "Bearer {{token}}"  
+                            }  
+                        ]  
+                    }  
+                }  
+            ]  
+        },  
+        {  
+            "name": "Animals",  
+            "item": [  
+                {  
+                    "name": "Add Animal",  
+                    "request": {  
+                        "method": "POST",  
+                        "header": [  
+                            {  
+                                "key": "Content-Type",  
+                                "value": "application/json"  
+                            }  
+                        ],  
+                        "body": {  
+                            "mode": "raw",  
+                            "raw": "{\n  \"name\": \"{name}\",\n  \"type\": \"{type}\",\n  \"ownerId\": \"{ownerId}\"\n}"  
+                        },  
+                        "url": "{{baseUrl}}/animals"  
+                    }  
+                },  
+                {  
+                    "name": "Get Animal",  
+                    "request": {  
+                        "method": "GET",  
+                        "url": "{{baseUrl}}/animals/{animalId}",  
+                        "header": [  
+                            {  
+                                "key": "Authorization",  
+                                "value": "Bearer {{token}}"  
+                            }  
+                        ]  
+                    }  
+                }  
+            ]  
+        }  
+    ],  
+    "variables": [  
+        {  
+            "key": "baseUrl",  
+            "value": "http://api.example.com"  
+        },  
+        {  
+            "key": "token",  
+            "value": "your_api_token_here"  
+        },  
+        {  
+            "key": "username",  
+            "value": "your_username_here"  
+        },  
+        {  
+            "key": "password",  
+            "value": "your_password_here"  
+        },  
+        {  
+            "key": "email",  
+            "value": "your_email_here"  
+        },  
+        {  
+            "key": "name",  
+            "value": "your_animal_name_here"  
+        },  
+        {  
+            "key": "type",  
+            "value": "animal_type_here"  
+        },  
+        {  
+            "key": "ownerId",  
+            "value": "owner_id_here"  
+        }  
+    ]  
+}
